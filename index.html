@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>วันครบรอบ - ถามว่าเธอรักเค้ามั้ยคะ?🥺</title>
+  <style>
+    :root{
+      --bg:#fff7fb;
+      --card:#ffffff;
+      --accent:#b17ecf;
+      --accent-2:#ff9ec4;
+      --text:#000000;
+      --muted:#6b6b6b;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Thai','Sarabun',Arial}
+    body{background:linear-gradient(160deg,var(--bg),#ffffff);display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{width:100%;max-width:520px;background:var(--card);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,0.08);padding:28px;text-align:center}
+    h1{margin:0 0 10px 0;font-size:22px;color:var(--text)}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    .message{font-size:18px;margin-top:18px}
+    .small{font-size:13px;color:var(--muted);margin-top:10px}
+    .choices{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+    .btn{background:linear-gradient(180deg,var(--accent),var(--accent-2));color:white;border:0;padding:12px 18px;border-radius:12px;font-weight:600;cursor:pointer;flex:1;min-width:130px;transition:transform .14s ease,box-shadow .14s ease}
+    .btn.secondary{background:transparent;color:var(--accent);border:2px solid var(--accent);}
+    .btn:active{transform:translateY(2px)}
+    .page{display:none}
+    .page.active{display:block}
+    .photo{width:90%;max-height:500px;object-fit:cover;border-radius:12px;margin-top:18px}
+    .confetti{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+    footer{margin-top:18px;font-size:12px;color:var(--muted)}
+    @media (max-width:420px){.btn{padding:10px 12px;min-width:120px}}
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <section id="qPage" class="page active" aria-labelledby="qTitle">
+      <h1 id="qTitle">เธอรักเขามั้ยคะ?🥺</h1>
+      <p class="lead">เลือกที่เธอชอบเลยอ้วนขอดีๆๆน้า☺️</p>
+      <div class="choices" role="radiogroup" aria-label="คำตอบรัก">
+        <button class="btn" data-answer="รักมาก">รักมาก</button>
+        <button class="btn" data-answer="รักที่สุด">รักที่สุด</button>
+        <button class="btn secondary" data-answer="ไม่รัก">ไม่รัก</button>
+      </div>
+      <p class="small">(มีไว้เฉยๆให้เสียเวลาอ่านเล่นๆ)</p>
+      <footer>🤍</footer>
+    </section>
+
+    <section id="noPage" class="page" aria-labelledby="noTitle">
+      <h2 id="noTitle">งั้นไม่ต้องเล่น</h2>
+      <p class="message">😒</p>
+      <div style="margin-top:18px">
+        <button class="btn secondary" id="backBtn">เล่นใหม่</button>
+      </div>
+    </section>
+
+    <section id="yesPage" class="page" aria-labelledby="yesTitle">
+      <h1 id="yesTitle">เค้าก็รักเธอนะ💕</h1>
+      <p class="message" id="yesMessage">ขอบคุณที่รักเค้าน้าอ้วนน — เค้ารักเธอมากๆๆเลย</p>
+      <div style="margin-top:18px">
+        <button class="btn" id="nextLoveBtn">มีอะไรจะบอก</button>
+      </div>
+    </section>
+
+    <section id="lovePage" class="page" aria-labelledby="loveTitle">
+      <h1 id="loveTitle">หอมๆ</h1>
+      <p class="message">อันนี้คือรูปคู่เค้ากับเธอรูปแรกที่ถ่ายจากมือถือเค้าตอนนั้นเค้าเขินมากเหมือนจะเป็นลมมม🤍</p>
+      <img src="us3.jpg" alt="" class="photo">
+      <div style="margin-top:18px">
+        <button class="btn" id="nextLove2Btn">มีอีกนะ</button>
+      </div>
+    </section>
+
+    <section id="love2Page" class="page" aria-labelledby="love2Title">
+      <h1 id="love2Title">โฟโต้บูธรูปแรก</h1>
+      <p class="message">ก่อนจะมาถ่ายอันนี้ตอนนั้นเค้าเดินตามหลังเธออยู่ชั้นGแต่เธอไม่เห็นแล้วเดินหนีเค้าเลยงอนวิ่งหนีเลย556354535แต่ก็เข้าใจผิดนิดนึง🥲สุดท้ายเลยได้มาถ่ายตู้นี้ จริงๆรูปนี้น่ารักมากเลยนะเพราะยังเขินกันอยู่เค้าชอบมากๆๆ</p>
+      <img src="us1.JPG" alt="" class="photo">
+      <div style="margin-top:18px">
+        <button class="btn secondary" id="backLove2Btn">ย้อนกลับ</button>
+        <button class="btn" id="nextLove3Btn">มีอีก</button>
+      </div>
+    </section>
+
+    <section id="love3Page" class="page" aria-labelledby="love3Title">
+      <h1 id="love3Title">หนังเรื่องแรกที่ไปดูด้วยกัน(ถึงจะไม่ได้ดู)</h1>
+      <p class="message">ไม่รู้เนื้อเรื่องเป็นไงแต่คนข้างๆไม่ให้ดูแล้ว เพราะมีอีกอันนึงน่าดูกว่าตั้งเย้อออ😚 อยากบอกว่าเธอน่ารักมากๆๆๆเลย</p>
+      <img src="us2.jpg" alt="" class="photo">
+      <div style="margin-top:18px">
+        <button class="btn secondary" id="backLove3Btn">ย้อนกลับ</button>
+        <button class="btn" id="nextLove4Btn">สุดท้ายแล้ว</button>
+      </div>
+    </section>
+
+    <section id="love4Page" class="page" aria-labelledby="love4Title">
+      <h1 id="love4Title">สิ่งที่เค้าอยากจะบอก</h1>
+      <p class="message">เค้าอยากบอกว่าที่ผ่านมาเราอาจจะไม่เข้าใจกันบ้างแต่ขอบคุณน้าที่ยอมคุยกันTT ตอนนี้เดือนที่4แล้วเค้ารอใช้ชีวิตกับเธอต่อในอนาคตนู่นนอยู่นะแล้วก็ที่เธอพูดกับเค้าบ่อยๆว่ากลัวเค้ามีกิ๊กเค้าขอบอกไว้เลยว่าเค้าไม่มีทางเปิดรับคนอื่นแล้วเพราะเค้ามีเธออยู่เค้าจะซื่อสัตย์กับเธอคนเดียวนะเด่กน้อย แต่ถ้าเธอมีเค้าก็ขอพูดตรงๆว่าความเชื่อใจมันมีแค่ครั้งเดียวเพราะงั้นมีอะไรเราต้องคุยกันนะขอให้เธอได้ใช้ชีวิตให้คุ้มเรียนเก่งขึ้นเรื่อยๆเป็นที่รักของทุกคน(ยกเว้นสาวๆ😡)🤍</p>
+      <div style="margin-top:18px">
+        <button class="btn secondary" id="backLove4Btn">ย้อนกลับ</button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="confetti" id="confetti"></div>
+
+  <script>
+    const qPage = document.getElementById('qPage');
+    const noPage = document.getElementById('noPage');
+    const yesPage = document.getElementById('yesPage');
+    const lovePage = document.getElementById('lovePage');
+    const love2Page = document.getElementById('love2Page');
+    const love3Page = document.getElementById('love3Page');
+    const love4Page = document.getElementById('love4Page');
+
+    const choices = Array.from(document.querySelectorAll('.choices .btn'));
+    const back = document.getElementById('backBtn');
+    const nextLoveBtn = document.getElementById('nextLoveBtn');
+    const nextLove2Btn = document.getElementById('nextLove2Btn');
+    const backLove2Btn = document.getElementById('backLove2Btn');
+    const nextLove3Btn = document.getElementById('nextLove3Btn');
+    const backLove3Btn = document.getElementById('backLove3Btn');
+    const nextLove4Btn = document.getElementById('nextLove4Btn');
+    const backLove4Btn = document.getElementById('backLove4Btn');
+    const confettiEl = document.getElementById('confetti');
+
+    function show(page){
+      [qPage,noPage,yesPage,lovePage,love2Page,love3Page,love4Page].forEach(p=>p.classList.remove('active'));
+      page.classList.add('active');
+      if(page!==yesPage) confettiEl.innerHTML='';
+    }
+
+    choices.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const a = btn.dataset.answer;
+        if(a === 'ไม่รัก'){
+          show(noPage);
+        } else {
+          document.getElementById('yesMessage').textContent = `${a} เค้ารักเธอมากๆๆเลย`;
+          show(yesPage);
+          launchConfetti();
+        }
+      });
+    });
+
+    back.addEventListener('click',()=>show(qPage));
+    nextLoveBtn.addEventListener('click',()=>show(lovePage));
+    nextLove2Btn.addEventListener('click',()=>show(love2Page));
+    backLove2Btn.addEventListener('click',()=>show(lovePage));
+    nextLove3Btn.addEventListener('click',()=>show(love3Page));
+    backLove3Btn.addEventListener('click',()=>show(love2Page));
+    nextLove4Btn.addEventListener('click',()=>show(love4Page));
+    backLove4Btn.addEventListener('click',()=>show(love3Page));
+
+    function launchConfetti(){
+      confettiEl.innerHTML = '';
+      for(let i=0;i<30;i++){
+        const el = document.createElement('div');
+        el.style.position='absolute';
+        el.style.left = Math.random()*100 + '%';
+        el.style.top = '-10%';
+        el.style.width = (6+Math.random()*8) + 'px';
+        el.style.height = (6+Math.random()*8) + 'px';
+        el.style.borderRadius='2px';
+        el.style.opacity = 0.95;
+        el.style.background = `hsl(${Math.random()*360},80%,60%)`;
+        el.style.transition = `transform 1800ms linear, top 1800ms cubic-bezier(.2,.9,.2,1)`;
+        confettiEl.appendChild(el);
+        setTimeout(()=>{
+          el.style.top = (60+Math.random()*40) + '%';
+          el.style.transform = `translateY(0) rotate(${Math.random()*720}deg)`;
+          el.style.left = (Math.random()*100) + '%';
+        }, 20 + Math.random()*200);
+      }
+      setTimeout(()=>confettiEl.innerHTML='',3500);
+    }
+  </script>
+</body>
+</html>
